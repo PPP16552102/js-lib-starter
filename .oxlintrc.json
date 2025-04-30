@@ -1,0 +1,18 @@
+{
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "extends": ["recommanded"],
+  "rules": {
+    "no_cond_assign": "off",
+    "no_console": "error",
+    "no_unused_vars": "error",
+    "quotes": ["error", "double"],
+    "semi": "error"
+  },
+  "parser": {
+    "ecma_version": 9,
+    "source_type": "module"
+  }
+}
