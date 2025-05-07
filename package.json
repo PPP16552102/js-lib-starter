@@ -36,7 +36,9 @@
     "start": "node ./playground/index.js",
     "build": "gulp clear && cross-env NODE_ENV=production rolldown -c",
     "preversion": "gulp version",
-    "version": "npm run build && git add dist && git add package.json"
+    "version": "npm run build && git add dist && git add package.json",
+    "fix": "oxlint --fix lib/**/*.js",
+    "release": "release-it"
   },
   "keywords": [
     "http",
@@ -51,6 +53,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.8.1",
     "@commitlint/config-conventional": "^17.8.1",
+    "@release-it/conventional-changelog": "^10.0.1",
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "cross-env": "^7.0.3",
@@ -58,6 +61,7 @@
     "fs-extra": "^11.3.0",
     "gulp": "^5.0.0",
     "husky": "^8.0.3",
+    "jasmine-ajax": "^4.0.0",
     "jasmine-core": "^5.7.1",
     "karma": "^6.4.4",
     "karma-chrome-launcher": "^3.2.0",
@@ -71,11 +75,44 @@
     "mocha": "^11.1.0",
     "oxlint": "^0.16.7",
     "prettier": "^3.5.3",
+    "release-it": "^19.0.2",
     "rolldown": "^1.0.0-beta.8",
     "rollup": "^4.40.0",
+    "sinon": "^20.0.0",
     "typescript": "^4.9.5"
   },
   "sideEffects": false,
+  "release-it": {
+    "git": {
+      "commitMessage": "chore(release): v${version}",
+      "push": true,
+      "commit": true,
+      "tag": true,
+      "requireCommits": false,
+      "requireCleanWorkingDir": false
+    },
+    "githug": {
+      "release": true,
+      "draft": true
+    },
+    "npm": {
+      "publish": false,
+      "ignoreVersion": false
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": "angular",
+        "infile": "CHANGELOG.md",
+        "header": "# Changelog"
+      }
+    },
+    "hooks": {
+      "before:init": "npm test",
+      "after:bump": "gulp version --bump ${version} && npm run build && npm run test:build:version && git add ./dist && git add ./package-lock.json",
+      "before:release": "npm run release:changelog:fix",
+      "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
+    }
+  },
   "commitlint": {
     "rules": {
       "header-max-length": [
