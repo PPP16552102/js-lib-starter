@@ -1,12 +1,23 @@
 {
-  "name": "app",
+  "name": "lib-starter",
   "main": "./dist/app.js",
   "version": "0.1.0",
-  "authors": ["Peter"],
-  "description": "Promise based HTTP client for the browser and node.js",
-  "moduleType": ["amd", "globals"],
-  "keywords": ["fetch", "http", "promise", "node"],
-  "license": "MIT",
+  "authors": [
+    "Peter"
+  ],
+  "description": "javascript lib starter",
+  "moduleType": [
+    "amd",
+    "globals"
+  ],
+  "keywords": [
+    "lib",
+    "starter",
+    "oxc",
+    "rolldown",
+    "mocha"
+  ],
+  "license": "ISC",
   "ignore": [
     "**/.*",
     "*.iml",

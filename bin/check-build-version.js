@@ -1,7 +1,6 @@
 import fs from 'fs';
 import assert from 'assert';
 import app from '../index.js';
-// import appBuild from '../dist/node/app.cjs';
 
 const { version } = JSON.parse(fs.readFileSync('./package.json'));
 

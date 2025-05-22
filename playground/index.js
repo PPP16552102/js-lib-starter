@@ -1,1 +1,1 @@
-console.log('hello world');
+import '../dist/esm/app.js';

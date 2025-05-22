@@ -1,3 +1,4 @@
+
 //#region lib/env/data.js
 const VERSION = "0.1.0";
 
@@ -8,4 +9,4 @@ const app = { VERSION };
 var app_default = app;
 
 //#endregion
-export { app_default as default };
+module.exports = app_default;
