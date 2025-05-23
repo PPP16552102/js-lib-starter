@@ -40,6 +40,10 @@
     "fix": "oxlint --fix lib/**/*.js",
     "release": "release-it"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PPP16552102/js-lib-starter.git"
+  },
   "keywords": [
     "lib",
     "starter",
