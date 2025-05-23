@@ -12,11 +12,11 @@
         "default": "./index.d.ts"
       },
       "browser": {
-        "require": "./dist/browser/axios.cjs",
+        "require": "./dist/browser/app.js",
         "default": "./index.js"
       },
       "default": {
-        "require": "./dist/node/axios.cjs",
+        "require": "./dist/node/app.js",
         "default": "./index.js"
       }
     }
@@ -110,7 +110,7 @@
     },
     "hooks": {
       "before:init": "npm run test",
-      "after:bump": "npm run preversion && npm run build && npm run test:build:version && git add ./dist && git add ./package-lock.json",
+      "after:bump": "gulp version && npm run build && npm run test:build:version && git add ./dist && git add ./package-lock.json",
       "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
     }
   },
